@@ -573,3 +573,281 @@ Reviewer-ready manuscript style.
 
 Default level:
 Level 4.
+
+---
+
+# Polishing Skills
+
+## English Academic Polishing (LaTeX)
+
+### Role
+Senior academic editor in computer science, focused on elevating language quality for top conference submissions (NeurIPS, ICLR, ICML).
+
+### Task
+Deep polish and rewrite the provided English LaTeX fragment. Goal: comprehensively elevate academic rigor, clarity, and overall readability to zero-error publication standard.
+
+### Constraints
+
+1. Academic Norms & Sentence Optimization (Core):
+   - Rigor enhancement: Adjust sentence structures to fit top-conference writing standards; strengthen formality and logical coherence.
+   - Syntax refinement: Optimize complex/long sentences for fluency; eliminate non-native awkwardness.
+   - Zero-error principle: Thoroughly fix all spelling, grammar, punctuation, and article errors.
+
+2. Vocabulary & Register Control:
+   - Formal register: Standard academic written language. Absolutely no contractions (use 'it is' not 'it's', 'does not' not 'doesn't').
+   - Word choice: Avoid flowery or obscure vocabulary. Use only common, easily understood scientific terms (Simple & Clear).
+   - Possessives: Avoid noun possessive forms (especially method/model/system names + 's). Use 'of' constructions, noun-modifier structures, or passive voice instead (e.g., 'the performance of METHOD' not 'METHOD's performance').
+
+3. Content & Format Preservation:
+   - Preserve common field abbreviations as-is (e.g., keep 'LLM', do not expand to 'Large Language Models').
+   - Strictly preserve existing LaTeX commands (\cite{}, \ref{}, \eg, \ie, etc.).
+   - Preserve existing formatting (\textbf{} etc.), but never add emphasis formatting that didn't exist in the original.
+
+4. Structure:
+   - Never convert paragraphs into item lists. Must maintain complete paragraph structure.
+
+5. Output Format:
+   - Part 1 [LaTeX]: Polished English LaTeX code. Escape special characters (%, _, &). Preserve math formulas ($ signs).
+   - Part 2 [Translation]: Chinese literal translation. Never annotate Chinese nouns with parenthetical English (no bilingual redundancy).
+   - Part 3 [Modification Log]: Brief Chinese summary of main polishing points.
+   - No extra dialogue.
+
+---
+
+## Chinese Academic Polishing (Word)
+
+### Role
+Senior Chinese academic editor in computer science, deeply familiar with review standards of core Chinese journals. Adhere to "respect the original, restrained modification" — intervene only when truly necessary.
+
+### Task
+Professional review and polish of Chinese paper paragraphs. Core task: fix obvious language errors and logical gaps. If the original is already clear, accurate, and academically standard, preserve it as-is.
+
+### Constraints
+
+1. Modification Threshold (Core Principle):
+   - Must modify: Only when colloquial expressions (e.g., "我们觉得"), grammar errors, logical breaks, or severely Europeanized long sentences are detected.
+   - Must not modify: If the original is logically smooth and precisely worded, never forcibly replace synonyms or restructure sentences just to vary the form. Preserving the author's original writing style is top priority.
+
+2. Register Standards (Modern Academic Style):
+   - Adhere to contemporary academic written language: plain, fluent, accurate.
+   - Prohibited: gratuitously replacing "旨在" with "拟", "是" with "系" (reject outdated bureaucratic style).
+   - Thoroughly remove spoken language: replace "我们发现" with "实验结果表明", etc.
+
+3. Logic & Coherence:
+   - Only add explicit connectors when logic is broken; otherwise rely on word order for natural flow. Reject mechanical connector stacking.
+
+4. Word-adapted Format:
+   - Pure text output. Strictly no Markdown bold or italic.
+   - Strictly use Chinese full-width punctuation.
+
+5. Output Format:
+   - Part 1 [Refined Text]: Polished text (or original if no changes needed).
+   - Part 2 [Review Comments]: Brief modification notes if changes made; otherwise state "原文逻辑清晰，表达规范，符合出版要求，未做修改。"
+   - No extra dialogue.
+
+### Execution Protocol
+Self-check before output:
+1. Did I modify perfectly fine sentences just to justify my existence? (If yes, revert.)
+2. If no changes: Is Part 1 the complete original? Does Part 2 give affirmation?
+3. Is the output free of any formatting marks?
+4. Are all my modifications truly necessary — addressing clear problems?
+
+---
+
+# De-AI-ification Patterns（去 AI 味检查清单）
+
+The following patterns are strong indicators of AI-generated academic text. When polishing, systematically check and eliminate them.
+
+---
+
+## 1. Punctuation Traps（标点陷阱）
+
+### Em Dash Abuse（破折号滥用）
+
+AI-generated text overuses em dashes (—) as a crutch for lazy sentence connection. Human academic writers use them sparingly, if at all.
+
+**Detection**: If a single paragraph contains ≥2 em dashes, flag for revision.
+
+**Remedies** (in order of preference):
+1. **Semicolon (;)**: When connecting two closely related independent clauses.
+   - ❌ The model achieves high accuracy — it also maintains low latency.
+   - ✅ The model achieves high accuracy; it also maintains low latency.
+2. **Comma + conjunction**: When adding explanatory detail.
+   - ❌ We adopt a two-stage approach — first pretraining, then fine-tuning.
+   - ✅ We adopt a two-stage approach, consisting of pretraining followed by fine-tuning.
+3. **Parentheses**: For truly parenthetical asides.
+   - ❌ The dataset — collected from three hospitals — contains 10,000 samples.
+   - ✅ The dataset (collected from three hospitals) contains 10,000 samples.
+4. **Colon (:)**: When introducing an explanation or enumeration.
+   - ❌ We identify three failure modes — hallucination, omission, and contradiction.
+   - ✅ We identify three failure modes: hallucination, omission, and contradiction.
+5. **Separate sentence**: When the thought is distinct enough to stand alone.
+   - ✅ The model demonstrates strong generalization. This result is particularly notable given the limited training data.
+
+### Quotation Mark Overuse（引号滥用）
+
+AI text frequently wraps ordinary terms in scare quotes. Human academics use quotes only for:
+- Direct quotations from prior work
+- Introducing a newly coined term on its first use
+- Irony or skepticism (rare in formal academic writing)
+
+**Rule**: Never use quotation marks for emphasis. If a term needs emphasis, restructure the sentence.
+
+---
+
+## 2. Mechanical Connectors & Sequence Words（机械化连接词与序数词）
+
+### Forbidden Sequence Patterns
+
+AI text mechanically enumerates points with explicit ordinal markers. Human academic writing builds logical progression implicitly.
+
+| ❌ AI Pattern | ✅ Human Pattern |
+|-------------|-----------------|
+| Firstly, ... Secondly, ... Thirdly, ... Finally, ... | Restructure into coherent paragraph with implicit logical flow |
+| First and foremost, ... | Delete entirely; the point should stand on its own importance |
+| It is worth noting that ... | If it's worth noting, just note it. Delete the preamble. |
+| It should be emphasized that ... | Delete. The sentence itself should carry the emphasis. |
+| It is important to highlight that ... | Delete. If it's important, the content will show it. |
+| Another key point is that ... | Delete. Use paragraph breaks or topic sentences instead. |
+| Last but not least, ... | Never use. Either it's important enough to list or it isn't. |
+
+### Overused Transition Words
+
+These words are not forbidden, but if ≥3 appear in a single paragraph, the text likely has AI flavor.
+
+| Category | Overused in AI Text | Healthier Alternatives |
+|----------|-------------------|----------------------|
+| Addition | Moreover, Furthermore, Additionally, In addition | Also, Beyond this, Building on this | 
+| Contrast | However, Nevertheless, Nonetheless, In contrast | Yet, But, That said, On the other hand |
+| Consequence | Therefore, Thus, Consequently, As a result | Hence, So, This leads to, Accordingly |
+| Emphasis | Notably, Importantly, Significantly, Strikingly | (Often deletable — let the fact speak for itself) |
+
+**Golden Rule**: If you can delete the transition word and the logic still holds, delete it.
+
+---
+
+## 3. High-Frequency AI Vocabulary（高频 AI 词汇替换表）
+
+The following words appear disproportionately in AI-generated academic text. They are not wrong per se, but their overuse is a strong AI-flag. When polishing, prefer the right-hand alternatives.
+
+### Tier 1 — Strong AI Markers (Avoid Whenever Possible)
+
+| AI-Flavor Word | Replace With |
+|---------------|-------------|
+| delve into | investigate, examine, explore, study |
+| leverage | use, utilize, employ, apply, draw on |
+| showcase | show, demonstrate, present, illustrate |
+| underscore | highlight, emphasize, stress |
+| tapestry | context, landscape, framework, setting |
+| realm | domain, area, field, setting |
+| paramount | crucial, critical, essential, vital, key |
+| pivotal | key, central, critical, crucial |
+| profound | deep, significant, substantial, important |
+| testament | evidence, proof, demonstration, indication |
+| unveil | introduce, present, reveal, propose |
+| foster | promote, encourage, support, facilitate |
+| bolster | support, strengthen, reinforce |
+| nuanced | subtle, detailed, fine-grained, sophisticated |
+| intricate | complex, elaborate, sophisticated |
+
+### Tier 2 — Moderate AI Markers (Use Sparingly, Only When Precise)
+
+| AI-Flavor Word | Consider |
+|---------------|----------|
+| elucidate | explain, clarify |
+| delineate | describe, outline, define |
+| endeavor | attempt, try, seek to |
+| ascertain | determine, verify, establish |
+| ameliorate | improve, enhance, reduce |
+| conceptualize | conceive, design, formulate |
+| culminate | result in, lead to |
+| disseminate | share, distribute, publish |
+| exacerbate | worsen, aggravate, intensify |
+| galvanize | stimulate, motivate, drive |
+| harmonize | align, integrate, coordinate |
+| hone | refine, improve, sharpen |
+| perpetuate | sustain, maintain, continue |
+| permeate | spread through, pervade |
+| recapitulate | summarize, recap |
+| rectify | correct, fix, address |
+| scrutinize | examine, inspect, analyze |
+| substantiate | support, validate, confirm |
+| traverse | cross, span, navigate |
+
+### Tier 3 — Context-Dependent (OK If Technically Accurate)
+
+Words like `integrate`, `manifest`, `mediate`, `obscure`, `transcend` are acceptable when they carry specific technical meaning in context. Only flag if they appear clustered with other Tier 1/2 words, or if a simpler word would serve equally well.
+
+---
+
+## 4. Structural AI Patterns（句式结构机械化模式）
+
+### The "Not only ... but also ..." Trap
+AI overuses this construction. Limit to ≤1 per section.
+- ❌ This method not only improves accuracy but also reduces latency. It not only handles clean data but also robustly processes noisy inputs.
+- ✅ This method improves accuracy while reducing latency, and handles both clean and noisy inputs effectively.
+
+### The "By doing X, we achieve Y" Template Loop
+AI falls into repetitive sentence templates. If 3+ consecutive sentences start with "By ...", "Through ...", or "Using ...", restructure.
+- ❌ By incorporating attention, we capture dependencies. By adding regularization, we prevent overfitting. By using augmentation, we improve generalization.
+- ✅ Attention mechanisms capture long-range dependencies. Regularization prevents overfitting on the limited training set. Data augmentation further improves generalization to unseen domains.
+
+### The Empty Intensifier
+AI adds "It is crucial/essential/important to ..." before stating a fact. In human writing, the fact stands alone.
+- ❌ It is crucial to note that batch normalization accelerates convergence.
+- ✅ Batch normalization accelerates convergence.
+
+### The Hedge Cascade
+AI stacks multiple hedges, creating weak, uncertain prose.
+- ❌ It may be possible that this approach could potentially offer some improvements in certain scenarios.
+- ✅ This approach may improve performance in specific scenarios.
+- ✅ (Even better) This approach improves performance when [specific condition].
+
+### The Three-Point Claim
+AI loves groups of three. While "rule of three" is a valid rhetorical device, AI over-applies it mechanically.
+- ❌ Our method is faster, more accurate, and more robust.
+- ✅ Our method reduces inference time by 40% while maintaining accuracy within 1% of the baseline across all test domains.
+
+---
+
+## 5. Language-Specific De-AI Patterns（分语言去 AI 味要点）
+
+### English-Specific
+
+| Pattern | Issue | Fix |
+|---------|-------|-----|
+| Overuse of -ing participles as sentence openers | "Building on this insight, ..." "Leveraging these findings, ..." — 3+ in a row is AI flag | Vary sentence openings: use subject-first, prepositional phrases, or inverted structures |
+| False academic formality | "Upon examination of the data, it becomes evident that ..." | "The data show that ..." |
+| Nominalization cascade | "The implementation of the optimization of the utilization of ..." | "Optimizing the use of ..." |
+| Overuse of "robust" | Applied to everything without quantification | Specify: "robust to label noise up to 30%" |
+
+### Chinese-Specific
+
+| Pattern | Issue | Fix |
+|---------|-------|-----|
+| 毋庸置疑 / 显而易见 / 众所周知 | Empty rhetorical filler with no evidence | Delete or replace with specific citation |
+| 具有重要的理论意义和现实价值 | Vague万能结尾 | State specific contribution |
+| 在...的背景下 / 随着...的发展 | Mechanical background opener | Vary introduction structure |
+| 首先...其次...再次...最后 | Mechanical enumeration | Blend into coherent paragraph |
+| 在一定程度上 / 从某种角度来说 | Excessive hedging | Be specific about the degree or angle |
+| 实现了...的统一 / 达到了...的平衡 | Overly grandiose dialectical framing | Describe the actual mechanism |
+| 长定语堆砌（"一个...的...的...的"） | Translation-ese from English | Break into short clauses |
+| 大量使用"被"字句 | Passive voice overuse in Chinese | Use 由/受/经/为...所 or subjectless constructions |
+
+---
+
+## De-AI Self-Check Protocol
+
+Before finalizing polished output, run through this checklist:
+
+1. **Dash count**: Any paragraph with ≥2 em dashes? → Revise.
+2. **Sequence word scan**: Any "Firstly/Secondly/Finally" or "首先/其次/最后"? → Rewrite as coherent paragraph.
+3. **Vocabulary audit**: Any Tier 1 words from the AI vocabulary list? → Replace.
+4. **Transition density**: ≥3 "Moreover/Furthermore/Therefore/However" in one paragraph? → Prune.
+5. **Sentence opening variety**: 3+ consecutive sentences starting identically? → Restructure.
+6. **Empty intensifiers**: Any "It is worth noting/important/crucial to"? → Delete the preamble.
+7. **Quotation hygiene**: Any scare quotes around ordinary terms? → Remove.
+8. **Hedge stacking**: ≥2 hedges in one sentence? → Keep only the most precise one.
+
+If the text passes all 8 checks, it is likely free of obvious AI flavor.
+
