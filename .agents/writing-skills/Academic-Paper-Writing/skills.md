@@ -729,25 +729,59 @@ The following patterns are strong indicators of AI-generated academic text. When
 
 ### Em Dash Abuse（破折号滥用）
 
-AI-generated text overuses em dashes (—) as a crutch for lazy sentence connection. Human academic writers use them sparingly, if at all.
+AI-generated text overuses em dashes (—) as a crutch for lazy sentence connection. Human academic writers use them sparingly, if at all. **The preferred remedy is to use subordinate clauses (从句) or appositives (同位语) instead.**
 
 **Detection**: If a single paragraph contains ≥2 em dashes, flag for revision.
 
 **Remedies** (in order of preference):
-1. **Semicolon (;)**: When connecting two closely related independent clauses.
-   - ❌ The model achieves high accuracy — it also maintains low latency.
-   - ✅ The model achieves high accuracy; it also maintains low latency.
+1. **Subordinate clause / Appositive（从句/同位语 — 首选方案）**: Embed the parenthetical information into the sentence using relative clauses or appositive phrases. This is the most natural, most human academic pattern.
+   - ❌ The model — trained on a large corpus — achieves high accuracy.
+   - ✅ The model, which was trained on a large corpus, achieves high accuracy.
+   - ❌ We propose a novel loss function — a variant of cross-entropy with adaptive margins.
+   - ✅ We propose a novel loss function, a variant of cross-entropy with adaptive margins.
 2. **Comma + conjunction**: When adding explanatory detail.
    - ❌ We adopt a two-stage approach — first pretraining, then fine-tuning.
    - ✅ We adopt a two-stage approach, consisting of pretraining followed by fine-tuning.
-3. **Parentheses**: For truly parenthetical asides.
-   - ❌ The dataset — collected from three hospitals — contains 10,000 samples.
-   - ✅ The dataset (collected from three hospitals) contains 10,000 samples.
-4. **Colon (:)**: When introducing an explanation or enumeration.
+3. **Colon (:)**: When introducing an explanation or enumeration.
    - ❌ We identify three failure modes — hallucination, omission, and contradiction.
    - ✅ We identify three failure modes: hallucination, omission, and contradiction.
-5. **Separate sentence**: When the thought is distinct enough to stand alone.
+4. **Separate sentence**: When the thought is distinct enough to stand alone.
    - ✅ The model demonstrates strong generalization. This result is particularly notable given the limited training data.
+
+### Bullet Point & List Prohibition（项目符号与列表禁止）
+
+Academic papers in top-tier venues rarely use bullet points or itemized lists in the main body text. AI-generated text frequently defaults to lists as a lazy organizational crutch.
+
+**Rule**: Never output `\item`, `- `, `* `, or numbered lists. All content must be expressed as coherent prose paragraphs.
+
+**Detection**: Any use of `\begin{itemize}`, `\begin{enumerate}`, or Markdown bullet syntax (`- `, `* `, `1. `) in generated text.
+
+**Remedies**:
+- Convert list items into consecutive sentences within a single paragraph.
+- Use connective phrases ("First, ... Second, ..." is acceptable in moderation; "To begin with, ... Furthermore, ... Finally, ..." is better).
+- If the list items are truly independent concepts, give each its own paragraph with a topic sentence.
+
+| ❌ AI Pattern | ✅ Human Pattern |
+|-------------|-----------------|
+| `\begin{itemize} \item A \item B \item C \end{itemize}` | Coherent paragraph: "We consider three dimensions: A, B, and C. First, A provides... Building on this, B enables... Finally, C ensures..." |
+| `- Method A: 85.2% \n- Method B: 92.1%` | "Method B achieved 92.1%, outperforming Method A (85.2%) by a margin of 6.9 percentage points." |
+
+### Coherent Paragraph Expression（连贯段落表达）
+
+Academic writing flows through paragraphs, not fragmented statements. Every paragraph should serve a single argumentative purpose with sentences that build on each other logically.
+
+**Rules**:
+1. **One paragraph, one idea**: Each paragraph serves exactly one argumentative purpose.
+2. **Topic sentence first**: Lead with the main claim, then support with evidence and interpretation.
+3. **Logical progression**: Sentences within a paragraph should follow Claim → Evidence → Interpretation, not random observations.
+4. **Avoid sentence fragments**: Every sentence must be a complete thought. Avoid orphan sentences that don't connect to their neighbors.
+5. **Prefer subordinate clauses over em dashes**: Use "which", "that", ", where", ", because" to connect ideas rather than em dashes.
+
+| ❌ AI Pattern | ✅ Human Pattern |
+|-------------|-----------------|
+| Short, disconnected sentences with no logical flow between them | Sentences linked by shared subject, pronoun reference, or logical connectors |
+| Each sentence introduces a new topic | Each sentence builds on the previous one |
+| Lists where each item could be swapped without affecting meaning | Ordered argument where position matters |
 
 ### Quotation Mark Overuse（引号滥用）
 

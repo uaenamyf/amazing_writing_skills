@@ -84,6 +84,7 @@
 
 ### B. 去 AI 味（如涉及文本生成/润色）
 - [ ] 破折号单段是否 ≥2 个？
+- [ ] 是否使用了项目符号或列表（`\item`、`- `、`* `）？—— 必须转为连贯段落
 - [ ] 是否有 Firstly/Secondly/Finally 等机械序数词？
 - [ ] 是否有 Tier 1 强 AI 标记词汇（leverage, delve into, showcase...）？
 - [ ] 过渡词单段是否 ≥3 个（Moreover/Furthermore/Therefore...）？

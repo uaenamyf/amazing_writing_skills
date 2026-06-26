@@ -42,13 +42,13 @@
 - 逐段对应，原始文本有几段就记录几段
 - 涉及图表移动/删除时，必须包含对应的图注/表注原文
 
-### 4. 客观科学语调
+### 5. 去 AI 味核心规则 (De-AI-ification)
 
-保持中立、精确、可复现、可验证。
-
-- ✅ 推荐：`The proposed method demonstrates...`
-- ❌ 禁止：`This groundbreaking method...`
-- 禁止个人观点、情感化语言、营销话术、宣传性措辞
+- **禁止破折号**：推荐使用从句（relative clauses）或同位语（appositives）替代（— → 从句/同位语/分号/逗号/冒号）
+- **禁止项目符号与列表**：必须将 `\item`、`- `、编号列表转为连贯段落
+- **拒绝机械连接词**：删除 Firstly/Secondly/Finally 等序数词堆砌
+- **替换 AI 高频词汇**：leverage → use, delve into → investigate, showcase → demonstrate 等
+- **客观科学语调**：保持中立、精确、可复现、可验证。禁止 "This groundbreaking method..."
 
 ---
 
