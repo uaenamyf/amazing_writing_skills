@@ -53,7 +53,43 @@ unless evidence is explicitly provided.
 
 ---
 
-## Principle 3: Objective Scientific Tone
+## Principle 3: Citation Transparency (引用透明原则)
+
+When modifying or rewriting any section of a manuscript, every citation change must be explicitly tracked and reported.
+
+### 3.1 Citation Change Tracking Rules
+
+When performing text optimization that involves citation changes, always produce a **Citation Change Log** containing:
+
+| 字段 | 说明 |
+|------|------|
+| **新增引用** | 优化后新增的引用，标注：引用条目、使用位置（章节/段落）、使用目的、是否已在原References中 |
+| **删减引用** | 从原段落删除的引用，标注：引用条目、原位置、删减原因 |
+| **保留引用** | 原引用在新文本中的位置变化（如有移动） |
+
+### 3.2 Citation Change Justification
+
+每条新增或删减引用必须有明确的学术理由：
+
+- **新增理由**：支撑新论点 / 替代过时引用 / 建立学术对话 / 补充证据链
+- **删减理由**：精简冗余 / 换用更权威引用 / 聚焦核心论点 / 段落重组导致
+
+### 3.3 References Sync Rule
+
+优化后，必须检查所有新增引用是否已存在于原论文的 References 列表中：
+- 若已存在 → 仅标注"已在References中"
+- 若不存在 → 提供完整的引用条目，按目标期刊格式，供作者添加到 References
+
+### 3.4 Anti-Citation-Fabrication
+
+禁止虚构不存在的引用。所有新增引用必须来自：
+- 参考论文中已引用的文献
+- 用户论文中其他章节已有的引用
+- 本领域公认的高影响力文献（需能提供完整条目）
+
+---
+
+## Principle 4: Objective Scientific Tone
 
 Maintain:
 

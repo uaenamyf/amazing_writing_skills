@@ -97,7 +97,13 @@
 - [ ] `Author-Style-Fingerprint` 是否没有混入去 AI 味内容？
 - [ ] `Top-Journal-Writing` 是否没有混入去 AI 味内容？
 
-### D. 文件同步
+### D. 引用透明（Citation Transparency）
+- [ ] 是否明确列出了所有新增的引用及其使用位置、使用目的？
+- [ ] 是否明确列出了所有删减的引用及其删减原因？
+- [ ] 新增引用是否已在原 References 中存在？若不存在，是否提供了完整条目？
+- [ ] 是否有虚构引用（禁止）？
+
+### E. 文件同步
 - [ ] 如果修改了任何 `skills.md`，对应的 `README.md` 是否已同步更新？
 - [ ] 如果修改了 Skill 的能力范围，根目录 `writing-skills/README.md` 是否已同步更新？
 
