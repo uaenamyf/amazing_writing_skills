@@ -240,6 +240,18 @@ Scientific Implication
 
 ---
 
+# Output Completeness Rule（输出完整性规则）
+
+When generating a comparison report with "修改前 vs 修改后" (before/after) format:
+
+1. **完整记录原则**：每个「修改前」区块必须包含被修改段落的**完整原始文本**，不得使用 `...` 或 `(omitted)` 等省略标记
+2. **逐段对应**：原始文本有几段，修改前就记录几段；修改后有几段，也应完整记录
+3. **禁止截断**：不允许只贴"前两段"然后说"后面类似"——截断等于信息丢失，作者无法对照
+4. **包含附属元素**：如果修改涉及图表（Fig./Table）的移动或删除，修改前必须包含对应的图注/表注原文
+5. **自我检查**：生成报告后，逐项检查每个「修改前」区块，确认没有任何 `...` 省略标记
+
+---
+
 # Section-Level Writing Skills
 
 ## Abstract
